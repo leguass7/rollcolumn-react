@@ -1,0 +1,91 @@
+{
+  "name": "rollcolumn-react",
+  "version": "0.1.0",
+  "description": "React component RollColumn",
+  "homepage": "https://avatarsolucoesdigitais.com.br",
+  "author": "Leandro Sbrissa",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "keywords": [
+    "react"
+  ],
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "cross-env CI=1 react-scripts test --env=jsdom --coverage",
+    "test:update": "cross-env CI=1 react-scripts test --env=jsdom --coverage --updateSnapshot",
+    "test:watch": "react-scripts test --env=jsdom",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "eject": "react-scripts eject",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "@rollup/plugin-url": "^4.0.2",
+    "@svgr/rollup": "^5.2.0",
+    "classnames": "^2.2.6",
+    "coveralls": "^3.0.11",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "lodash-es": "^4.17.15",
+    "mkdirp": "^1.0.3",
+    "postcss-import": "^12.0.1",
+    "postcss-url": "^8.0.0",
+    "prettier": "^1.19.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-connect-context-map": "^1.1.1",
+    "react-css-component": "^1.0.2",
+    "react-dom": "^16.13.0",
+    "rollup": "^2.1.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.5.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "shallowequal": "^1.1.0"
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "packages/**/**/**/*.{js,ts,tsx}",
+      "packages/**/**/*.{js,ts,tsx}",
+      "packages/**/*.{js,ts,tsx}",
+      "!src/**/setup*.{js,ts,tsx}",
+      "!**/setup*.{js,ts,tsx}"
+    ],
+    "displayName": "avatardomus-components",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 50,
+        "lines": 80,
+        "statements": -10
+      }
+    }
+  }
+}
