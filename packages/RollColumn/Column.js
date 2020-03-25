@@ -8,22 +8,24 @@ import MainContext from './DefaultContext';
 export default function Column(props) {
   const colRef = useRef();
   const { columnRegister, getName } = useContext(MainContext);
-  const { children, className, order, checked, value, name, style } = props;
+  const { children, className, order, checked, value, name, style, onCheck } = props;
 
   const columnProps = { name: getName ? getName() : name };
   columnProps.id = `rollcolumn-item-${columnProps.name}-${order}`;
 
   useEffect(() => {
     if (colRef.current && columnRegister) {
+      colRef.current.setAttribute('data-rollcolumn-order', order);
       columnRegister({
         id: colRef.current.getAttribute('id'),
         ref: colRef.current,
         order,
         checked,
         value,
+        onCheck,
       });
     }
-  }, [columnRegister, order, checked, value]);
+  }, [columnRegister, order, checked, value, onCheck]);
 
   const styles = { ...style, order: columnProps.order };
   const classe = cx(css.item, className);
@@ -43,6 +45,7 @@ Column.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   style: PropTypes.object,
   name: PropTypes.string,
+  onCheck: PropTypes.func,
 };
 
 Column.defaultProps = {
@@ -52,4 +55,5 @@ Column.defaultProps = {
   value: 0,
   style: {},
   name: 'noNamed',
+  onCheck: () => {},
 };
