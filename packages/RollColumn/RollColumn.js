@@ -5,6 +5,7 @@ import { UniversalStyle as Style, StyleCacheProvider } from 'react-css-component
 import css from './rollcolumns.css';
 import { round } from '../utilities/formats';
 import { filterChildrenElements } from '../utilities/reactUtils';
+import Control from './Control';
 
 import RenderInputs from './RenderInputs';
 import Column from './Column';
@@ -12,7 +13,7 @@ import Column from './Column';
 import MainContext from './DefaultContext';
 
 export default function RollColumn(props) {
-  const { children, className, name, style } = props;
+  const { children, className, name, style, onColumnChange } = props;
   const [columnList, setColumnList] = useState([]);
 
   const initialWidth = filterChildrenElements(children, [Column]).length * 100;
@@ -25,14 +26,26 @@ export default function RollColumn(props) {
     return result !== 0 ? result * -1 : 0;
   }
 
-  const columnRegister = useCallback((columnProps) => {
-    setColumnList((oldList) => {
-      const newList = oldList.filter((c) => c.id !== columnProps.id);
-      const result = [...newList, { ...columnProps }];
-      setColumnWidth(`${result.length * 100}%`);
-      return result;
-    });
-  }, []);
+  const handleColumnChange = useCallback(
+    (objInput) => {
+      const ord = parseInt(objInput.getAttribute('data-rollcolumn-order'), 10);
+      if (objInput) onColumnChange(objInput, ord || false);
+    },
+    [onColumnChange],
+  );
+
+  const columnRegister = useCallback(
+    (columnProps) => {
+      setColumnList((oldList) => {
+        const newList = oldList.filter((c) => c.id !== columnProps.id);
+        const result = [...newList, { ...columnProps }];
+        Control.setControlColumns({ name, handleColumnChange }, result);
+        setColumnWidth(`${result.length * 100}%`);
+        return result;
+      });
+    },
+    [name, handleColumnChange],
+  );
 
   const registerLabel = useCallback(
     (labelProps) => {
@@ -74,9 +87,9 @@ export default function RollColumn(props) {
   return (
     <StyleCacheProvider>
       <Style css={buildStyles(columnList)} />
-      <div className={mainClass}>
-        <RenderInputs name={name} columnList={columnList} />
-        <MainContext.Provider value={{ columnRegister, registerLabel, getName }}>
+      <div id={name} className={mainClass}>
+        <MainContext.Provider value={{ columnRegister, handleColumnChange, registerLabel, getName }}>
+          <RenderInputs name={name} columnList={columnList} />
           <div className={contentClass} style={styles}>
             {children}
           </div>
@@ -91,10 +104,12 @@ RollColumn.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
   style: PropTypes.object,
+  onColumnChange: PropTypes.func,
 };
 
 RollColumn.defaultProps = {
   className: null,
   children: null,
   style: {},
+  onColumnChange: () => {},
 };

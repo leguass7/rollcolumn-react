@@ -8,18 +8,9 @@ export default function RenderInputs(props) {
   return (
     <>
       {columnList.map((column) => {
-        const { value, order, checked } = column;
+        const { value, order, checked, onCheck } = column;
         const key = `rollcolumn-input-ctrl-${name}-${column.order}`;
-        return (
-          <InputControl
-            key={key}
-            name={name}
-            columnCount={columnList.length}
-            value={value}
-            order={order}
-            checked={checked}
-          />
-        );
+        return <InputControl key={key} name={name} value={value} order={order} checked={checked} onCheck={onCheck} />;
       })}
     </>
   );
