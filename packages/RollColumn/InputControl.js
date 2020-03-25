@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable react/forbid-prop-types */
 import React, { useRef, useEffect, useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';

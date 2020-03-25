@@ -30,6 +30,7 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'no-console': 'warn',
     'no-plusplus': 'off',
+    'no-param-reassign': 'off',
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     'max-len': [2, 120, 4, { ignoreUrls: true, ignoreComments: true }],
     'import/prefer-default-export':'off',

@@ -2,11 +2,11 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { UniversalStyle as Style, StyleCacheProvider } from 'react-css-component';
+
 import css from './rollcolumns.css';
 import { round } from '../utilities/formats';
 import { filterChildrenElements } from '../utilities/reactUtils';
 import Control from './Control';
-
 import RenderInputs from './RenderInputs';
 import Column from './Column';
 
