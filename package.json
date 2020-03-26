@@ -1,10 +1,21 @@
 {
   "name": "rollcolumn-react",
   "version": "0.1.0",
-  "description": "React component RollColumn",
+  "description": "React web component RollColumn",
   "homepage": "https://avatarsolucoesdigitais.com.br",
   "author": "Leandro Sbrissa",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avatarsolucoes/rollcolumn-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avatarsolucoes/rollcolumn-react.git"
+  },
+  "keywords": [
+    "react",
+    "components"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
@@ -12,9 +23,6 @@
     "LICENSE",
     "README.md",
     "package.json"
-  ],
-  "keywords": [
-    "react"
   ],
   "scripts": {
     "start": "rollup -c -w",
