@@ -5,7 +5,7 @@
 
 
 # rollcolumn-react
-[![NPM](https://img.shields.io/npm/v/rollcolumn-react.svg)](https://www.npmjs.com/package/rollcolumn-react)
+[![NPM](https://img.shields.io/npm/v/rollcolumn-react.svg)](https://www.npmjs.com/package/rollcolumn-react)[![License: MIT](https://img.shields.io/github/license/avatarsolucoes/rollcolumn-react.svg)](LICENSE)
 
 > React **web** component
 
